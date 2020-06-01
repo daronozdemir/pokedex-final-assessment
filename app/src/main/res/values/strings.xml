@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">pokedex</string>
+    <string name="app_name">Pokédex</string>
+    <string name="action_search">Search</string>
+    <string name="name">Name</string>
+    <string name="pokemon_front_image">Pokemon Front Image</string>
+    <string name="id">#ID</string>
+    <string name="pokemonname">pokemonName</string>
+    <string name="weight">weight</string>
+    <string name="height">height</string>
+    <string name="sa">sa</string>
+    <string name="special_attack">special-attack</string>
+    <string name="special_defence">special-defence</string>
+    <string name="sd">sd</string>
+    <string name="speed">speed</string>
+    <string name="attack">attack</string>
+    <string name="defence">defence</string>
+    <string name="hp">hp</string>
+    <string name="stats">stats</string>
+    <string name="type">type</string>
+    <string name="types">types</string>
+    <string name="type1">type1</string>
+    <string name="type2">type2</string>
+    <string name="pokemon_back_image">Pokemon Back Image</string>
+    <string name="description">description</string>
+    <string name="color">color</string>
+    <string-array name="sort_types">
+        <item>All</item>
+        <item>Kanto</item>
+        <item>Johto</item>
+        <item>Hoenn</item>
+        <item>Sinnoh</item>
+        <item>Unova</item>
+        <item>Kalos</item>
+        <item>Alola</item>
+        <item>Other</item>
+    </string-array>
+    <string name="myPokemon">My Pokemon</string>
+    <string name="action_delete">Delete Pokédex</string>
 </resources>
