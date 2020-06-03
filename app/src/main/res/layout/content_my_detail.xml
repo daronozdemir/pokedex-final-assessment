@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDark"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".UI.MyDetailActivity"
+    tools:showIn="@layout/activity_my_detail">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardBackgroundColor="@color/colorAccent"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/myPokeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/name"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/myPokeFrontImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="8dp"
+                android:contentDescription="@string/pokemon_front_image"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myPokeName"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/myPokeBackImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="60dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myPokeName"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/pokemon_back_image" />
+
+            <TextView
+                android:id="@+id/myId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/id"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myPokeFrontImage" />
+
+            <TextView
+                android:id="@+id/myHeightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/height"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myId" />
+
+            <TextView
+                android:id="@+id/myHeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/height"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/myHeightTv"
+                app:layout_constraintTop_toBottomOf="@+id/myId" />
+
+            <TextView
+                android:id="@+id/myWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:text="@string/weight"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myId" />
+
+            <TextView
+                android:id="@+id/myWeightTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/weight"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toStartOf="@+id/myWeight"
+                app:layout_constraintTop_toBottomOf="@+id/myId" />
+
+            <TextView
+                android:id="@+id/myStatsTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/stats"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myHeight" />
+
+            <TextView
+                android:id="@+id/myHpTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/hp"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/myHp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/hp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/myHpTv"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/myDefence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sd"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/myDefenceTv"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/myDefenceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/defence"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toEndOf="@+id/myAttack"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/myAttackTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/attack"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toEndOf="@+id/myHp"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/myAttack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sa"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/myAttackTv"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/mySpeedTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/speed"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toEndOf="@+id/myDefence"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/mySpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sd"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/mySpeedTv"
+                app:layout_constraintTop_toBottomOf="@+id/myStatsTv" />
+
+            <TextView
+                android:id="@+id/mySpecialDefence"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:text="@string/sd"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myDefence" />
+
+            <TextView
+                android:id="@+id/mySpecialDefenceTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/special_defence"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toStartOf="@+id/mySpecialDefence"
+                app:layout_constraintTop_toBottomOf="@+id/myDefenceTv" />
+
+            <TextView
+                android:id="@+id/mySpecialAttackTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/special_attack"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myAttackTv" />
+
+            <TextView
+                android:id="@+id/mySpecialAttack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/sa"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/mySpecialAttackTv"
+                app:layout_constraintTop_toBottomOf="@+id/myAttack" />
+
+            <TextView
+                android:id="@+id/myTypeTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/type"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mySpecialAttackTv" />
+
+            <TextView
+                android:id="@+id/myType1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/type1"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myTypeTv" />
+
+            <TextView
+                android:id="@+id/myType2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/type2"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/myType1"
+                app:layout_constraintTop_toBottomOf="@+id/myTypeTv" />
+
+            <TextView
+                android:id="@+id/myColorTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/color"
+                android:textAllCaps="true"
+                app:layout_constraintStart_toStartOf="@+id/mySpecialDefenceTv"
+                app:layout_constraintTop_toBottomOf="@+id/mySpecialDefenceTv" />
+
+            <TextView
+                android:id="@+id/myColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/color"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/myColorTv"
+                app:layout_constraintTop_toBottomOf="@+id/myColorTv" />
+
+            <TextView
+                android:id="@+id/myDescriptionTv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/description"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myType1" />
+
+            <TextView
+                android:id="@+id/myDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/description"
+                android:textStyle="bold|italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/myDescriptionTv" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/deletePokemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:clickable="true"
+                android:focusable="true"
+                android:tint="@color/colorAccent"
+                app:layout_constraintStart_toEndOf="@+id/myColor"
+                app:layout_constraintTop_toBottomOf="@+id/mySpecialDefenceTv"
+                app:srcCompat="@android:drawable/ic_delete" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
