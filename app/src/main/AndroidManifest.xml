@@ -25,6 +25,10 @@
             android:name=".UI.MyDetailActivity"
             android:label="@string/myPokemon"
             android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".UI.MyPokemon"
+            android:label="@string/myPokemon"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

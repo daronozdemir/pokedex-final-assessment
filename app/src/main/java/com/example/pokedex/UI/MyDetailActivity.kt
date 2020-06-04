@@ -26,7 +26,7 @@ import com.example.pokedex.UI.MyDetailActivity
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class MyDetailActivity : AppCompatActivity(), SensorEventListener {
+class MyDetailActivity : AppCompatActivity() {
     val ID = "#ID "
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var myPokemonViewModel: MyPokemonViewModel? = null
