@@ -26,7 +26,7 @@ import com.example.pokedex.UI.MyDetailActivity
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class MyDetailActivity : AppCompatActivity() {
+class MyDetailActivity : AppCompatActivity(), SensorEventListener {
     val ID = "#ID "
     private val executor: Executor = Executors.newSingleThreadExecutor()
     private var myPokemonViewModel: MyPokemonViewModel? = null
@@ -113,6 +113,7 @@ class MyDetailActivity : AppCompatActivity() {
                     .setNegativeButton("No") { dialog, _ -> dialog.cancel() }.create().show()
         }
     }
+
     private fun deletePokemon(pokemon: MyPokemon?) {
         executor.execute { myPokemonViewModel!!.delete(pokemon) }
     }
@@ -133,4 +134,33 @@ class MyDetailActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager!!.unregisterListener(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sensorManager!!.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        if (event.values[0] > 20000) {
+            Glide.with(applicationContext)
+                    .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + pokemon!!.id + ".png")
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(pokeFrontImage!!)
+            Glide.with(applicationContext)
+                    .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/" + pokemon!!.id + ".png")
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(pokeBackImage!!)
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 }

@@ -1,7 +1,5 @@
 package com.example.pokedex.Model
 
-import android.opengl.GLES31Ext
-
 data class PokemonDetail(val abilities: List<Ability>, val baseExperience: Int,
                          val forms: List<Species>, val gameIndices: List<List<GameIndex>>,
                          val height: Double, val heldItems: List<HeldItem>, val id: Int,

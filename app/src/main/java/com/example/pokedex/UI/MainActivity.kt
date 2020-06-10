@@ -29,10 +29,8 @@ class MainActivity : AppCompatActivity() {
     private var pokemonList: List<Pokemon>? = ArrayList()
     private var sortedList: List<Pokemon>? = ArrayList()
     private var filteredList: List<Pokemon>? = ArrayList()
-
     private var pokedexAdapter: PokedexAdapter? = null
     private lateinit var viewModel: MainActivityViewModel
-
     private var limit = 0
     var isLimit = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         })
         initObservers()
         initRecyclerView()
+        sort()
     }
 
     private fun initRecyclerView() {
@@ -119,6 +118,85 @@ class MainActivity : AppCompatActivity() {
         pokedexAdapter!!.filteredPokemon(filteredPokemon)
     }
 
+    private fun sort() {
+        val spinner = findViewById<View>(R.id.typeFilter) as Spinner
+        val arrayAdapter = ArrayAdapter.createFromResource(this,
+                R.array.sort_types, R.layout.simple_spinner_item)
+        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinner.adapter = arrayAdapter
+        spinner.onItemSelectedListener = object : OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
+                if (pokemonList!!.size < 150) {
+                    viewModel!!.getPokemons(viewModel!!.count)
+                } else {
+                    when (position) {
+                        0 -> {
+                            sortedList = pokemonList
+                            pokedexAdapter!!.filteredPokemon(pokemonList)
+                        }
+                        1 -> {
+                            sortedList = pokemonList!!.subList(0, 151)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        2 -> {
+                            sortedList = pokemonList!!.subList(151, 251)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        3 -> {
+                            sortedList = pokemonList!!.subList(251, 386)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        4 -> {
+                            sortedList = pokemonList!!.subList(386, 493)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        5 -> {
+                            sortedList = pokemonList!!.subList(493, 649)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        6 -> {
+                            sortedList = pokemonList!!.subList(649, 721)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        7 -> {
+                            sortedList = pokemonList!!.subList(721, 807)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        8 -> {
+                            sortedList = pokemonList!!.subList(807, pokemonList!!.size)
+                            pokedexAdapter!!.filteredPokemon(sortedList)
+                        }
+                        else -> {
+                            sortedList = pokemonList
+                            pokedexAdapter!!.filteredPokemon(pokemonList)
+                        }
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                pokedexAdapter!!.filteredPokemon(pokemonList)
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        val menuSearch = menu.findItem(R.id.action_search)
+        val searchView = menuSearch.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(s: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(s: String): Boolean {
+                filter(s)
+                return false
+            }
+        })
+        return true
+    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will

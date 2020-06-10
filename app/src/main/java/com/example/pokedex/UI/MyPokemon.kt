@@ -19,10 +19,10 @@ import com.example.pokedex.R
 import com.example.pokedex.UI.MyPokedexAdapter.OnItemClickListner
 import java.util.*
 
-class MyPokemon : AppCompatActivity() {
+class MyPokemon : AppCompatActivity(), OnItemClickListner {
     private var pokedexAdapter: MyPokedexAdapter? = null
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: MyPokemonViewModel
+    private lateinit  var viewModel: MyPokemonViewModel
     private var pokemonList: List<MyPokemon?>? = ArrayList()
     private lateinit var bottomNavigationView: BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,6 +43,7 @@ class MyPokemon : AppCompatActivity() {
 
     private fun initRecyclerView() {
         pokedexAdapter = MyPokedexAdapter(this, pokemonList)
+        pokedexAdapter!!.setOnItemClickListner(this)
         recyclerView = findViewById(R.id.myPokeList)
         recyclerView.setHasFixedSize(true)
         val layoutManager = GridLayoutManager(this, 3)
@@ -66,5 +67,65 @@ class MyPokemon : AppCompatActivity() {
         } else {
             pokedexAdapter!!.swapList(pokemonList)
         }
+    }
+
+    private fun filter(query: String) {
+        val filteredPokemon: MutableList<MyPokemon?> = ArrayList()
+        for (pokemon in pokemonList!!) {
+            if (pokemon!!.name!!.toLowerCase().contains(query.toLowerCase())) {
+                filteredPokemon.add(pokemon)
+            }
+        }
+        pokedexAdapter!!.filteredPokemon(filteredPokemon)
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this@MyPokemon, message, Toast.LENGTH_LONG).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_my_pokemon, menu)
+        val menuSearch = menu.findItem(R.id.action_my_search)
+        val searchView = menuSearch.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(s: String): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(s: String): Boolean {
+                filter(s)
+                return false
+            }
+        })
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        val id = item.itemId
+        if (id == R.id.action_delete) {
+            val alert = AlertDialog.Builder(this, R.style.MyDialogTheme)
+            alert.setTitle(R.string.myPokemon)
+                    .setMessage("Are you sure you want to delete your Pokédex?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes") { dialog, which ->
+                        viewModel.deleteAllPokemons(pokemonList)
+                        showToast("Pokédex deleted.")
+                    }
+                    .setNegativeButton("No") { dialog, which -> dialog.cancel() }
+                    .create().show()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun OnItemClick(position: Int) {
+        val intent = Intent(this, MyDetailActivity::class.java)
+        val myPokemon = pokemonList!![position]
+        intent.putExtra("pokemon", myPokemon)
+        startActivity(intent)
     }
 }

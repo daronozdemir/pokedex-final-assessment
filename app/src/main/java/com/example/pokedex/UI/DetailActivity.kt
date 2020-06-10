@@ -28,7 +28,7 @@ import com.example.pokedex.R
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), SensorEventListener {
     private lateinit var viewModel: DetailActivityViewModel
     private var name: TextView? = null
     private var id: TextView? = null
@@ -207,5 +207,32 @@ class DetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPause() {
+        super.onPause()
+        sensorManager!!.unregisterListener(this)
+    }
 
+    override fun onResume() {
+        super.onResume()
+        sensorManager!!.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL)
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+        if (event.values[0] > 20000) {
+            Glide.with(applicationContext)
+                    .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/" + pokemonDetail?.id + ".png")
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(pokeFrontImage!!)
+            Glide.with(applicationContext)
+                    .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/shiny/" + pokemonDetail?.id + ".png")
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions().crossFade())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(pokeBackImage!!)
+        }
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor, accuracy: Int) {}
 }
