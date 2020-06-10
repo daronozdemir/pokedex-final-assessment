@@ -18,7 +18,6 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
-import com.example.pokedex.Model.MyPokemon
 import com.example.pokedex.Model.Pokemon
 import com.example.pokedex.R
 import java.util.*
