@@ -119,18 +119,18 @@ class DetailActivity : AppCompatActivity(), SensorEventListener {
             height!!.text = "${pokemonDetail!!.height} M"
             weight!!.text = "${pokemonDetail!!.weight} KG"
             hp!!.text = pokemonDetail!!.stats[5].base_stat.toString()
-            attack!!.text = java.lang.String.valueOf(pokemonDetail!!.stats!![4].base_stat)
-            defence!!.text = java.lang.String.valueOf(pokemonDetail!!.stats!![3].base_stat)
-            speed!!.text = java.lang.String.valueOf(pokemonDetail!!.stats!![0].base_stat)
-            specialAttack!!.text = java.lang.String.valueOf(pokemonDetail!!.stats!![2].base_stat)
-            specialDefence!!.text = java.lang.String.valueOf(pokemonDetail!!.stats!![1].base_stat)
-            if (pokemonDetail!!.types!!.size > 1) {
+            attack!!.text = java.lang.String.valueOf(pokemonDetail!!.stats[4].base_stat)
+            defence!!.text = java.lang.String.valueOf(pokemonDetail!!.stats[3].base_stat)
+            speed!!.text = java.lang.String.valueOf(pokemonDetail!!.stats[0].base_stat)
+            specialAttack!!.text = java.lang.String.valueOf(pokemonDetail!!.stats[2].base_stat)
+            specialDefence!!.text = java.lang.String.valueOf(pokemonDetail!!.stats[1].base_stat)
+            if (pokemonDetail!!.types.size > 1) {
                 type!!.text = getString(R.string.types)
-                type1!!.text = pokemonDetail!!.types!![0].type!!.name
-                type2!!.text = pokemonDetail!!.types!![1].type!!.name
+                type1!!.text = pokemonDetail!!.types[0].type!!.name
+                type2!!.text = pokemonDetail!!.types[1].type!!.name
             } else {
                 type!!.text = getString(R.string.type)
-                type1!!.text = pokemonDetail!!.types!![0].type!!.name
+                type1!!.text = pokemonDetail!!.types[0].type!!.name
                 type2!!.visibility = View.INVISIBLE
             }
         })
@@ -155,19 +155,19 @@ class DetailActivity : AppCompatActivity(), SensorEventListener {
                         val backImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/" + pokemonDetail!!.id + ".png"
                         val height = pokemonDetail!!.height
                         val weight = pokemonDetail!!.weight
-                        val hp = pokemonDetail!!.stats!![5].base_stat
-                        val attack = pokemonDetail!!.stats!![4].base_stat
-                        val defence = pokemonDetail!!.stats!![3].base_stat
-                        val speed = pokemonDetail!!.stats!![0].base_stat
-                        val specialAttack = pokemonDetail!!.stats!![2].base_stat
-                        val specialDefence = pokemonDetail!!.stats!![1].base_stat
+                        val hp = pokemonDetail!!.stats[5].base_stat
+                        val attack = pokemonDetail!!.stats[4].base_stat
+                        val defence = pokemonDetail!!.stats[3].base_stat
+                        val speed = pokemonDetail!!.stats[0].base_stat
+                        val specialAttack = pokemonDetail!!.stats[2].base_stat
+                        val specialDefence = pokemonDetail!!.stats[1].base_stat
                         val type1: String?
                         val type2: String?
-                        if (pokemonDetail!!.types!!.size > 1) {
-                            type1 = pokemonDetail!!.types!![0].type!!.name
-                            type2 = pokemonDetail!!.types!![1].type!!.name
+                        if (pokemonDetail!!.types.size > 1) {
+                            type1 = pokemonDetail!!.types[0].type!!.name
+                            type2 = pokemonDetail!!.types[1].type!!.name
                         } else {
-                            type1 = pokemonDetail!!.types!![0].type!!.name
+                            type1 = pokemonDetail!!.types[0].type!!.name
                             type2 = null
                         }
                         val color = pokemonSpecie!!.color!!.name
@@ -179,7 +179,7 @@ class DetailActivity : AppCompatActivity(), SensorEventListener {
                         }
                         val pokemon = MyPokemon(id, name, frontImage, backImage, height, weight, hp, attack, defence, speed, specialAttack, specialDefence, type1, type2, color, description)
                         insertPokemon(pokemon)
-                        showToast(name!!.toUpperCase() + " is added to your Pokédex.")
+                        showToast(name.toUpperCase() + " is added to your Pokédex.")
                     }
                     .setNegativeButton("No") { dialog, which -> dialog.cancel() }
                     .create().show()

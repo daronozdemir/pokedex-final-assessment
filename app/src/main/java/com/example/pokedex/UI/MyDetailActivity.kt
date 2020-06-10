@@ -84,10 +84,7 @@ class MyDetailActivity : AppCompatActivity(), SensorEventListener {
         type2!!.text = pokemon!!.type2
         color.text = pokemon!!.color
         description.text = pokemon!!.description
-        if (type2 == null) {
-            type!!.setText(R.string.type)
-            type2.visibility = View.INVISIBLE
-        } else type?.setText(R.string.types)
+        type?.setText(R.string.types)
         Glide.with(applicationContext)
                 .load(pokemon!!.frontImage)
                 .centerCrop()

@@ -67,8 +67,8 @@ class MainActivity : AppCompatActivity() {
                     if (isLimit) {
                         if (visibleItemCount + pastVisibleItems >= totalItemCount) {
                             isLimit = false
-                            limit = viewModel!!.count
-                            viewModel!!.getPokemons(limit)
+                            limit = viewModel.count
+                            viewModel.getPokemons(limit)
                         }
                     }
                 }
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         })
         isLimit = true
         limit = 20
-        viewModel!!.getPokemons(limit)
+        viewModel.getPokemons(limit)
     }
 
     private fun initObservers() {
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             sortedList
         }
         for (pokemon in filteredList!!) {
-            if (pokemon.name!!.toLowerCase().contains(query.toLowerCase())) {
+            if (pokemon.name.toLowerCase().contains(query.toLowerCase())) {
                 filteredPokemon.add(pokemon)
             }
         }
@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         spinner.onItemSelectedListener = object : OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View, position: Int, id: Long) {
                 if (pokemonList!!.size < 150) {
-                    viewModel!!.getPokemons(viewModel!!.count)
+                    viewModel.getPokemons(viewModel.count)
                 } else {
                     when (position) {
                         0 -> {

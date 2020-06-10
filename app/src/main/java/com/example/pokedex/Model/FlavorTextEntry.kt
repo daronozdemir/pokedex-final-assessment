@@ -8,10 +8,6 @@ class FlavorTextEntry {
     @Expose
     var flavorText: String? = null
 
-    @SerializedName("language")
-    @Expose
-    var language: Language? = null
-
     @SerializedName("version")
     @Expose
     var version: Version? = null

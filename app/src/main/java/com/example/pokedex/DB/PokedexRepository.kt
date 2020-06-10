@@ -10,14 +10,14 @@ class PokedexRepository {
     private val OFFSET = 0
     private val pokedexDataBaseApiService = PokedexDatabaseApi.create()
     fun getPokemons(limit: Int): Call<PokemonResponse?>? {
-        return pokedexDataBaseApiService!!.getPokemons(limit, OFFSET)
+        return pokedexDataBaseApiService.getPokemons(limit, OFFSET)
     }
 
     fun getPokemon(name: String?): Call<PokemonDetail?>? {
-        return pokedexDataBaseApiService!!.getPokemon(name)
+        return pokedexDataBaseApiService.getPokemon(name)
     }
 
     fun getPokemonSpecies(name: String?): Call<PokemonSpecies?>? {
-        return pokedexDataBaseApiService!!.getPokemonSpecies(name)
+        return pokedexDataBaseApiService.getPokemonSpecies(name)
     }
 }

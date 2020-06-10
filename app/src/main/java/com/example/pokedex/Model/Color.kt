@@ -8,8 +8,5 @@ class Color {
     @Expose
     var name: String? = null
 
-    @SerializedName("url")
-    @Expose
-    var url: String? = null
 
 }
